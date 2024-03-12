@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Choice Quiz</title>
+ <link href="country.css" rel="stylesheet">
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <div id="quiz-container" class="first">
+        <h1> Country Quiz</h1>
+        <p id="question"></p>
+        <div id="options" class="second">
+            <label>
+                <input type="radio" name="choice" value="A">
+                <span id="optionA"></span>
+            </label>
+            <label>
+                <input type="radio" name="choice" value="B">
+                <span id="optionB"></span>
+            </label>
+            <label>
+                <input type="radio" name="choice" value="C">
+                <span id="optionC"></span>
+            </label>
+        </div>
+        <br>
+        <button id="submit">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const quizData = [
+    {
+       
+        question: "What is the capital of France?",
+        options: ["London", "Berlin", "Paris"],
+        correctAnswer: "C"
+    },
+
+    // Add more questions here
+    {
+        question: "What is the capital city of Pakistan?",
+        options: ["Islamabad", "Kathmandu", "Delhi"],
+        correctAnswer: "A"
+    }
+,
+    {
+        question: "What is the capital city of Nigeria?",
+        options: ["Paris", "Lagos", "Rangoon"],
+        correctAnswer: "B"
+    }
+,
+    {
+        question: "What is the capital city of Tanzania?",
+        options: ["Astana", "Dodoma", "Almaty"],
+        correctAnswer: "B"
+    }
+,
+    {
+        question: "What is the capital city of Boliva?",
+        options: ["Boliviano", "Thimpu", "La Paz"],
+        correctAnswer: "C"
+    },
+    {
+        question: "What is the capital city of Bosnia and Herzegovina?",
+        options: ["	Sarajevo", "	Sarajavo", "Sarjevo"],
+        correctAnswer: "A"
+    },
+    {
+        question: "What is the capital city of 	Botswana?",
+        options: ["Phnom Penh", "Yaounde", "Gaborone"],
+        correctAnswer: "C"
+    }
+    ,
+    {
+        question: "What is the capital city of 	Belarus?",
+        options: ["	Minsk", "Porto Novo", "Brussels"],
+        correctAnswer: "A"
+    }
+    ,
+    {
+        question: "What is the capital city of Burundi?",
+        options: ["Gitega", "Porto Novo", "Brussels"],
+        correctAnswer: "A"
+    },
+    {
+        question: "What is the capital city of Chile?",
+        options: ["	Brazzaville", "Santiago", "Bogota"],
+        correctAnswer: "B"
+    },
+    {
+        question: "What is the capital city of 	Costa Rica?",
+        options: ["	San Jose", "Zagreb", "Nicosia"],
+        correctAnswer: "A"
+    },
+    {
+        question: "What is the capital city of 	Djibouti?",
+        options: ["	Djibouti", "Zagreb", " 	Roseau"],
+        correctAnswer: "A"
+    },
+    {
+        question: "What is the capital city of 	Dominican Republic?",
+        options: ["San Salvador", "Santo Domingo", " Roseau"],
+        correctAnswer: "B"
+    },
+
+      {
+        question: "What is the capital city of 	Guyana?",
+        options: ["Kingston", "	Georgetown", " 	Pyongyang"],
+        correctAnswer: "B"
+    },
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionElements = document.querySelectorAll("label span");
+const submitButton = document.getElementById("submit");
+const resultElement = document.getElementById("result");
+
+function loadQuestion() {
+    const currentQuizData = quizData[currentQuestion];
+    questionElement.innerText = currentQuizData.question;
+    optionElements[0].innerText = currentQuizData.options[0];
+    optionElements[1].innerText = currentQuizData.options[1];
+    optionElements[2].innerText = currentQuizData.options[2];
+}
+
+function checkAnswer() {
+    const selectedOption = document.querySelector('input[name="choice"]:checked');
+    
+    if (!selectedOption) return;
+
+    const answer = selectedOption.value;
+    if (answer === quizData[currentQuestion].correctAnswer) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    } else {
+        displayResult();
+    }
+}
+
+function displayResult() {
+    questionElement.style.display = "none";
+    optionElements[0].style.display = "none";
+    optionElements[1].style.display = "none";
+    optionElements[2].style.display = "none";
+    submitButton.style.display = "none";
+    
+    resultElement.innerText = `You scored ${score} out of ${quizData.length}!`;
+}
+
+loadQuestion();
+submitButton.addEventListener("click", checkAnswer);
+
+
+    </script>
+</center>
+</body>
+</html>

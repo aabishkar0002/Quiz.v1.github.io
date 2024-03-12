@@ -1,0 +1,55 @@
+ body{
+        background-color: wheat;
+
+    }
+        h1{
+            font-size: 40px;
+            border: groove;
+            border-radius: 30px;
+            margin-left:300px;
+            margin-right:300px;
+            text-align: center;
+            margin-top: -30px;
+            background-color: orange;
+            color:black;
+        }
+        h1:hover{
+            background:rgb(194, 93, 194);
+            color:white;
+        }
+
+        .btlefarw{
+                background-color: wheat;
+                border:none;
+            }
+        @media only screen and (orientation:portrait)
+        {
+            h1{
+                margin-left:42px;
+                margin-top:-30px;
+                font-size: 24px;
+                width: 240px;
+                color: white;
+                background-color: black;
+                opacity: 85%
+            
+                }
+         
+                h1:hover{
+                background-color: purple;
+                color: whitesmoke;
+            }
+
+            .bitch
+            {
+                margin-top: 30px;
+                margin-right: -10px;
+            }
+            
+            body{
+                background-color:wheat;
+            }
+            .btlefarw{
+                background-color:wheat;
+            }
+        }

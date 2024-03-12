@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>General Knowledge</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="gk.css" rel="stylesheet">
+
+</head>
+<body>
+    <button class="btlefarw" onclick="arrowlefte()"><i class="fa fa-arrow-circle-left" style="font-size: 30px; "></i></button><h1>General Knowledge</h1><div class="bitch"><img src="GKR.png" width="60px" height="60px" style="float: right; margin-top:-80px; "></div>
+
+        <script>
+            function arrowlefte(){
+
+                window.location.href="index.html";
+            }
+        </script>
+        
+    
+    <form id="quiz-form">
+        <h2>Question 1: What is the capital of France?</h2>
+        <label>
+            <input type="checkbox" name="q1" value="paris"> Paris
+        </label>
+        <label>
+            <input type="checkbox" name="q1" value="berlin"> Berlin
+        </label>
+        <label>
+            <input type="checkbox" name="q1" value="london"> London
+        </label>
+
+        <h2>Question 2: Which planet is known as the Red Planet?</h2>
+        <label>
+            <input type="checkbox" name="q2" value="venus"> Venus
+        </label>
+        <label>
+            <input type="checkbox" name="q2" value="mars"> Mars
+        </label>
+        <label>
+            <input type="checkbox" name="q2" value="jupiter"> Jupiter
+        </label>
+
+        <h2>Question 3: What is 2 + 2?</h2>
+        <label>
+            <input type="checkbox" name="q3" value="3"> 3
+        </label>
+        <label>
+            <input type="checkbox" name="q3" value="4"> 4
+        </label>
+        <label>
+            <input type="checkbox" name="q3" value="5"> 5
+        </label>
+
+        <br><br>
+        <button type="button" id="submit-button">Submit</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            // Get the form element
+            const form = document.getElementById('quiz-form');
+            // Initialize the score
+            let score = 0;
+
+            // Loop through the questions
+            for (let i = 1; i <= 3; i++) {
+                // Get the selected answers for each question
+                const selectedAnswers = Array.from(form.elements['q' + i]).filter(input => input.checked);
+                
+                // Check if the correct answer is selected
+                const isCorrect = selectedAnswers.some(input => input.value === '4'); // For question 3
+                
+                if (isCorrect) {
+                    score++;
+                }
+            }
+
+            // Display the results
+            const results = document.getElementById('results');
+            results.innerHTML = `You scored ${score} out of 3.`;
+        });
+    </script>
+    
+</body>
+</html>
